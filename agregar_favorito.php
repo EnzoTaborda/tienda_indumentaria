@@ -8,7 +8,7 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 $usuario = $_SESSION['usuario'];
-$camiseta_id = $_POST['camiseta_id'];
+$camiseta_id = intval($_POST['camiseta_id']); // por seguridad
 
 // Buscar ID del usuario
 $stmt = $conn->prepare("SELECT id FROM usuarios WHERE usuario = ?");
@@ -21,7 +21,8 @@ $usuario_id = $res->fetch_assoc()['id'];
 
 // Insertar favorito
 $stmt = $conn->prepare("INSERT IGNORE INTO favoritos (usuario_id, camiseta_id) VALUES (?, ?)");
-$stmt->bind_param("ii", $usuario_id, $producto_id);
+$stmt->bind_param("ii", $usuario_id, $camiseta_id);
 $stmt->execute();
 
 header("Location: favoritos.php");
+exit;
