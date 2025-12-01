@@ -34,29 +34,24 @@ include 'conexion.php';
         <button type="submit">Agregar Remera</button>
         </div>
     </form>
-    <form action="editar_stock.php" method="POST"> 
-         <div class ="admin-conteiner">
-        <p>Editar stock<br></p>
-        <label for="producto">Selecciona la remera:</label>
-        <select name="nombre_s" id="producto">
-            <?php
-            $result = $conn->query("SELECT nombre FROM camisetas");
-            while ($row = $result->fetch_assoc()) {
-                echo "<option value='{$row['nombre']}'>{$row['nombre']}</option>";
-            }
-            ?>
-            </select><br><br>
-            <label for="stock">¿Mostrar en catálogo?</label>
-            <select name="stock" id="stock">
-            <option value="1">Sí</option>
-            <option value="0">No</option>
-            </select><br><br>
-            <button type="submit">Editar stock</button>
-        </div>
-    </form>
-    <br>
-     <div class="catalogo">
-        <?php include 'productos.php'; ?>
-    </div>
+<h3>Editar productos</h3>
+
+<table border="1" cellpadding="5">
+<tr>
+    <th>Nombre</th>
+    <th>Editar</th>
+</tr>
+
+<?php
+$result = $conn->query("SELECT id, nombre FROM camisetas");
+while ($row = $result->fetch_assoc()) {
+    echo "<tr>";
+    echo "<td>{$row['nombre']}</td>";
+    echo "<td><a class='boton' href='editar_producto.php?id={$row['id']}'>Editar</a></td>";
+    echo "</tr>";
+}
+?>
+</table>
+
 </body>
 </html>

@@ -34,7 +34,6 @@ $talles = explode(',', $producto['talles']); // Convertir la cadena a array
         <h5>Indumentaria Deportiva</h5>
 
         <a href="index.php" class="boton">inicio</a>
-        <a href="logout.php" class="boton">cerrar sesion</a>
     </header>
 
     <div class="detalle_producto">
@@ -58,12 +57,12 @@ $talles = explode(',', $producto['talles']); // Convertir la cadena a array
             <?php endforeach; ?>
         </div>
 
-        <a class="boton" href="https://wa.me/5493743557876?text=<?php echo urlencode('Hola, quiero comprar la camiseta de '.$producto['nombre']); ?>" target="_blank">
+        <a class="boton" href="https://wa.me/5493743618524?text=<?php echo urlencode('Hola, quiero comprar la camiseta de '.$producto['nombre']); ?>" target="_blank">
             Comprar por WhatsApp
         </a>
     </div>
 
     <br>
-    <a href="index.php">Volver al inicio</a>
+    <a href="index.php" class="boton">Volver al inicio</a>
 </body>
 </html>

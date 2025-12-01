@@ -45,7 +45,7 @@ $stmt->execute();
 $resultado = $stmt->get_result();
 
 echo "<h2>Mis camisetas Favoritas</h2>";
-
+echo "<div class='catalogo'>";
 while ($producto = $resultado->fetch_assoc()) {
     echo "<div class='producto'>";
         echo "<a href='detalle_producto.php?id={$producto['id']}' target='_blank'>";
@@ -53,7 +53,13 @@ while ($producto = $resultado->fetch_assoc()) {
         echo "</a>";
         echo "<h3>{$producto['nombre']}</h3>";
         echo "<p>Precio: \${$producto['precio']}</p>";
-    echo "</div><hr>";
+         // Botón para quitar de favoritos
+        echo "<form action='quitar_favorito.php' method='POST'>";
+        echo "<input type='hidden' name='camiseta_id' value='{$producto['id']}'>";
+        echo "<button type='submit' class='boton-quitar'>Quitar de favoritos</button>";
+        echo "</form>";
+    echo "</div>";
 }
+echo "</div>"; 
 ?>
 
