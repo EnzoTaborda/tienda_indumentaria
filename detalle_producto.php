@@ -42,14 +42,6 @@ $talles = explode(',', $producto['talles']); // Convertir la cadena a array
         <p class="precio">$<?php echo htmlspecialchars($producto['precio']); ?></p>
         <p><?php echo nl2br(htmlspecialchars($producto['descripcion'])); ?></p>
 
-            <!--Botón de favoritos -->
-    <?php if (isset($_SESSION['usuario']) && isset($_SESSION['rol']) && $_SESSION['rol'] === 'cliente'): ?>
-        <form method="POST" action="agregar_favorito.php">
-            <input type="hidden" name="camiseta_id" value="<?php echo $producto['id']; ?>">
-            <button type="submit">Agregar a Favoritos ❤️</button>
-        </form>
-    <?php endif; ?>
-        
         <div class="talles">
             <?php echo "Talles: "?>
             <?php foreach ($talles as $talle): ?>
@@ -57,9 +49,20 @@ $talles = explode(',', $producto['talles']); // Convertir la cadena a array
             <?php endforeach; ?>
         </div>
 
-        <a class="boton" href="https://wa.me/5493743618524?text=<?php echo urlencode('Hola, quiero comprar la camiseta de '.$producto['nombre']); ?>" target="_blank">
-            Comprar por WhatsApp
-        </a>
+            <!--Botón de favoritos -->
+    <?php if (isset($_SESSION['usuario']) && isset($_SESSION['rol']) && $_SESSION['rol'] === 'cliente'): ?>
+        <form method="POST" action="agregar_favorito.php">
+            <input type="hidden" name="camiseta_id" value="<?php echo $producto['id']; ?>">
+            <button type="submit">Agregar a Favoritos ❤️</button>
+        </form>
+    <?php endif; ?>
+
+        <form action="agregar_carrito.php" method="POST">
+            <input type="hidden" name="id" value="<?= $producto['id'] ?>">
+            <input type="hidden" name="nombre" value="<?= $producto['nombre'] ?>">
+            <input type="hidden" name="precio" value="<?= $producto['precio'] ?>">
+            <button type="submit">Agregar al carrito</button>
+        </form>
     </div>
 
     <br>

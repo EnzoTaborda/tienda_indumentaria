@@ -20,7 +20,7 @@ if ($buscar != '') {
 if ($resultado->num_rows > 0) {
     while ($producto = $resultado->fetch_assoc()) {
         echo "<div class='producto'>";
-        echo "<a href='detalle_producto.php?id={$producto['id']}' target='_blank'>";
+        echo "<a href='detalle_producto.php?id={$producto['id']}'>";
         echo "<img src='{$producto['imagen']}' alt='{$producto['nombre']}' width='200'>";
         echo "</a>";
         echo "<h3>{$producto['nombre']}</h3>";

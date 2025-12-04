@@ -23,6 +23,7 @@
 
             <?php if ($_SESSION['rol'] === 'cliente'): ?>
                 <a href="favoritos.php" class="boton">Favoritos</a>
+                <a href="carrito.php" class="boton">carrito</a>
             <?php endif; ?> 
 
         <?php else: ?>
